@@ -1,0 +1,7 @@
+<!--pages/user/index.wxml-->
+<view class="container">
+    <view class="top">
+        <view class="portrait">即将上线</view>
+        <view class="name">敬请期待</view>
+    </view>
+</view>
