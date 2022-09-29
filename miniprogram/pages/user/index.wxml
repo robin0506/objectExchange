@@ -1,7 +1,9 @@
 <!--pages/user/index.wxml-->
 <view class="container">
     <view class="top">
-        <view class="portrait">即将上线</view>
-        <view class="name">敬请期待</view>
+        <button class="portrait-container" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+            <image class="portrait"></image>
+        </button>
+        <view>{{nickname? nickname: '点击登录'}}</view>
     </view>
 </view>

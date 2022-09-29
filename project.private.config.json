@@ -6,41 +6,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
-        },
-        {
-          "name": "pages/getOpenId/index",
-          "pathName": "pages/getOpenId/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/deployService/index",
-          "pathName": "pages/deployService/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/selectRecord/index",
-          "pathName": "pages/selectRecord/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/sumRecordResult/index",
-          "pathName": "pages/sumRecordResult/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/updateRecord/index",
-          "pathName": "pages/updateRecord/index",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "pages/updateRecordResult/index",
           "pathName": "pages/updateRecordResult/index",
           "query": "",
@@ -53,8 +18,8 @@
           "scene": null
         },
         {
-          "name": "index_b",
-          "pathName": "pages/index_b/index",
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
           "query": "",
           "launchMode": "default",
           "scene": null

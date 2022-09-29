@@ -1,0 +1,15 @@
+<!--pages/login/index.wxml-->
+
+<view class="container">
+
+    <button class="portrait-container" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image class="portrait" src="{{avatarUrl}}"></image>
+    </button>
+    <view class="nickname-container">
+        <view class="nickname-title">昵称</view>
+        <input type="nickname" class="nickname" bindinput="bindKeyInput"  placeholder="请输入昵称"/>
+    </view>
+
+    <button class="submit" bindtap="submit" type="primary">确定</button>
+</view>
+
