@@ -39,7 +39,41 @@ Page({
     },
 
   submit(){
+    let that = this
     console.log('submit',this.data.avatarUrl,this.data.nickname)
+    let userInfo = {
+      avatarUrl: this.data.avatarUrl,
+      nickname: this.data.nickname
+    }
+    wx.setStorageSync('userInfo',userInfo)
+    let openid = wx.getStorageSync('openid')
+    console.log('openid', openid)
+
+
+     wx.cloud.callFunction({
+        name: 'objectFunctions',
+        config: {
+          env: this.data.envId
+        },
+        data: {
+          type: 'addUser',
+          data:{
+            avatarUrl: that.data.avatarUrl,
+            nickname: that.data.nickname
+          }
+        }
+      }).then((res)=>{
+        console.log('addUser',res)
+      })
+
+
+    return
+    wx.redirectTo({
+      url: '/pages/user/index',
+      fail:(e)=>{
+          console.log('fail',e)
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面显示
