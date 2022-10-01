@@ -1,9 +1,14 @@
 <!--pages/user/index.wxml-->
 <view class="container">
-    <view class="top">
-        <button class="portrait-container" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-            <image class="portrait"></image>
+    <view class="top" bindtap="jumpLogin">
+        <button class="portrait-container">
+            <image src="{{avatarUrl}}" class="portrait"></image>
         </button>
-        <view>{{nickname? nickname: '点击登录'}}</view>
+        <view >{{nickname? nickname: '点击登录'}}</view>
+    </view>
+
+    <view class="top" bindtap="jumpToMy">
+
+        <view class="detail">我的闲置物品清单</view>
     </view>
 </view>

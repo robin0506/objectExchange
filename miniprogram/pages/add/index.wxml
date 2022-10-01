@@ -1,2 +1,15 @@
 <!--pages/add/index.wxml-->
-<text>pages/add/index.wxml</text>
+<view class="add-container">
+    <view class="title-container">
+        <view class="title">闲置物品名称:</view>
+        <input class="title-content" type="text" bindinput="bindTitleInput" maxlength="15" />
+    </view>
+    <view class="pic-container">
+      <view class="pic" bindtap="addPic">
+        <image src="{{pic}}"></image>
+      </view>
+    </view>
+<!--    <view class="add-btn" >新增图片</view>-->
+    <button disabled="{{!pic || !title}}" class="submit" type="primary" bindtap="submit">确定</button>
+
+</view>

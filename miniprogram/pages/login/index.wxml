@@ -10,6 +10,6 @@
         <input type="nickname" class="nickname" bindinput="bindKeyInput"  placeholder="请输入昵称"/>
     </view>
 
-    <button class="submit" bindtap="submit" type="primary">确定</button>
+    <button disabled="{{!nickname}}" class="submit" bindtap="submit" type="primary">确定</button>
 </view>
 

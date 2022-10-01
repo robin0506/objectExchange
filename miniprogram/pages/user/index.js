@@ -1,6 +1,7 @@
 const app = getApp()
 const DB = wx.cloud.database()
 wx.cloud.init()
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
 
 // pages/user/index.js
@@ -11,9 +12,26 @@ Page({
    */
   data: {
      envId: 'object-cloud-1gwedj6jbbe3ef50',
-     hasRegistered: false
+     hasRegistered: false,
+     nickname: '',
+     avatarUrl: defaultAvatarUrl
   },
 
+  jumpLogin(){
+    if(!this.data.hasRegistered) {
+     wx.navigateTo({url:'/pages/login/index'})
+    }
+  },
+  jumpToMy() {
+  if (this.data.hasRegistered) {
+   wx.navigateTo({url:'/pages/myObject/index?page_openid='+wx.getStorageSync('openid')})
+  } else {
+    wx.switchTab({
+      url:'/pages/login/index'
+    })
+  }
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -30,22 +48,46 @@ Page({
         }
       }).then((res)=>{
         console.log('getOpenId', res.result.openid)
-        wx.setStorageSync('openid', res.result.openid)
+        wx.setStorageSync('openid', res.result.openid) //openid缓存
       })
 
-      console.log('openid', wx.getStorageSync('openid'))
-      DB.collection('user').where({
-        _openid: wx.getStorageSync('openid')
-      }).get({
-        success(res){
-          console.log('get user collection success')
-          if(res.data.length > 0) {
-            that.setData({
-              hasRegistered: true
-            })
-          }
-        }
-      })
+      if (wx.getStorageSync('userInfo')) {
+      // 先读缓存
+        let userInfo = wx.getStorageSync('userInfo')
+        console.log('storage', userInfo)
+        this.setData({
+            nickname: userInfo.nickname,
+            avatarUrl: userInfo.avatarUrl,
+            hasRegistered: true
+        })
+      } else {
+      // 缓存没有则读数据库
+        DB.collection('user').where({
+            _openid: wx.getStorageSync('openid')
+          }).get({
+            success(res){
+              console.log('get user collection success',res)
+              if(res.data.length > 0) {
+                let userInfo = {
+                      avatarUrl: res.data[0].avatarUrl,
+                      nickname: res.data[0].nickname
+                    }
+                wx.setStorageSync('userInfo', userInfo)
+                that.setData({
+                        nickname: userInfo.nickname,
+                        avatarUrl: userInfo.avatarUrl,
+                        hasRegistered: true
+                    })
+              } else {
+                //未注册
+              }
+            }
+          })
+
+      }
+
+
+
   },
 
   /**

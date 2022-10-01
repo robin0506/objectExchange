@@ -3,17 +3,19 @@
     "pages/index/index",
     "pages/user/index",
     "pages/add/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/myObject/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "闲置物品会发光",
+    "navigationBarTitleText": "断舍离部落",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "color": "#999",
     "selectedColor": "#3D98FF",
@@ -25,6 +27,12 @@
         "iconPath": "images/index.png",
         "pagePath": "pages/index/index",
         "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/add.png",
+        "iconPath": "images/add.png",
+        "pagePath": "pages/add/index",
+        "text": "发布"
       },
       {
         "selectedIconPath": "images/user.png",

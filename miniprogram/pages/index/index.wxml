@@ -10,17 +10,5 @@
                 <view class="title" >{{item.title}}</view>
             </view>
         </view>
-
-
-<!--        <view class="object">-->
-<!--            <view class="object-pic">-->
-<!--                <image  src="https://s1.ax1x.com/2022/09/25/xEcIx0.jpg" class="object-picture" mode="aspectFit" alt=""/>-->
-<!--            </view>-->
-<!--            <view class="details">-->
-<!--                <view class="title" >裙子</view>-->
-<!--            </view>-->
-<!--        </view>-->
-
-
     </view>
 </view>

@@ -1,0 +1,15 @@
+<!--pages/myObject/index.wxml-->
+<view class="my-object-container">
+    <view class="top-title">这是{{page_nickname}}发布的闲置物品</view>
+    <view class="objects">
+        <view class="object  {{'object-'+index}}" wx:for="{{list}}" wx:key="pic" >
+            <view class="object-pic">
+                <image bindtap="previewImage" data-index='{{index}}' src="{{item.pic}}" class="object-picture" mode="aspectFit" alt=""/>
+            </view>
+            <view class="details">
+                <view class="title" >{{item.title}}</view>
+            </view>
+        </view>
+        <view wx:if="{{list.length == 0}}" class="hint">你还没有发布闲置物品哦～</view>
+    </view>
+</view>
