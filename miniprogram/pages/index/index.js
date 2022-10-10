@@ -50,7 +50,7 @@ Page({
           this.setData({list: res.result.data.map(res=>{
             res.show = false
             return res
-          }).slice(0,10) || []})
+          }) || []})
           this.lazyLoad()
         }).catch((e)=>{
           console.log('getObjectList fail', e)

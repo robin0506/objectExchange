@@ -8,7 +8,9 @@
     </view>
 
     <view class="top" bindtap="jumpToMy">
-
         <view class="detail">我的闲置物品清单</view>
+    </view>
+    <view wx:if="{{!isCheck}}" class="top" bindtap="jumpToAdd">
+        <view class="detail">添加闲置物品</view>
     </view>
 </view>

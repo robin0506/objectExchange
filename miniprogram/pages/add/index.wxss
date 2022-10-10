@@ -50,3 +50,7 @@
 .submit {
   margin-top:30vh;
 }
+
+.check-text{
+  padding: 30rpx;
+}

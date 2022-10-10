@@ -14,8 +14,25 @@ Page({
      envId: 'object-cloud-1gwedj6jbbe3ef50',
      hasRegistered: false,
      nickname: '',
-     avatarUrl: defaultAvatarUrl
+     avatarUrl: defaultAvatarUrl,
+     isCheck: true
   },
+
+    forCheck(){
+       let that = this
+       wx.cloud.callFunction({
+                name: 'objectFunctions',
+                config: {
+                  env: this.data.envId
+                },
+                data: {
+                  type: 'getCheck'
+                }
+              }).then((res)=>{
+                console.log('getCheck', res.result.data[0].isCheck)
+                that.setData({isCheck: res.result.data[0].isCheck})
+              })
+    },
 
   jumpLogin(){
     if(!this.data.hasRegistered) {
@@ -32,11 +49,22 @@ Page({
   }
 
   },
+
+  jumpToAdd() {
+     if (this.data.hasRegistered) {
+       wx.navigateTo({url:'/pages/add/index'})
+      } else {
+        wx.switchTab({
+          url:'/pages/login/index'
+        })
+      }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     console.log('onLoad')
+    this.forCheck()
     let that = this
     wx.cloud.callFunction({
         name: 'objectFunctions',

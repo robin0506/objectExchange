@@ -2,9 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/user/index",
-    "pages/add/index",
     "pages/login/index",
-    "pages/myObject/index"
+    "pages/myObject/index",
+    "pages/add/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -27,12 +27,6 @@
         "iconPath": "images/index.png",
         "pagePath": "pages/index/index",
         "text": "首页"
-      },
-      {
-        "selectedIconPath": "images/add.png",
-        "iconPath": "images/add.png",
-        "pagePath": "pages/add/index",
-        "text": "发布"
       },
       {
         "selectedIconPath": "images/user.png",

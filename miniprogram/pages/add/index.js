@@ -8,13 +8,32 @@ Page({
    */
   data: {
     title:'',
-    pic:PLAIN
+    pic:PLAIN,
+    isCheck: true
   },
 
+
+  forCheck(){
+     let that = this
+     wx.cloud.callFunction({
+              name: 'objectFunctions',
+              config: {
+                env: this.data.envId
+              },
+              data: {
+                type: 'getCheck'
+              }
+            }).then((res)=>{
+              console.log('getCheck', res.result.data[0].isCheck)
+              that.setData({isCheck: res.result.data[0].isCheck})
+            })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.forCheck()
+
     if (!wx.getStorageSync('userInfo')) {
       switchTab({
         url: '/pages/login/index'
