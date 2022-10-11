@@ -7,7 +7,7 @@
         <view >{{nickname? nickname: '点击登录'}}</view>
     </view>
 
-    <view class="top" bindtap="jumpToMy">
+    <view wx:if="{{!isCheck}}" class="top" bindtap="jumpToMy">
         <view class="detail">我的闲置物品清单</view>
     </view>
     <view wx:if="{{!isCheck}}" class="top" bindtap="jumpToAdd">
