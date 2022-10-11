@@ -8,6 +8,10 @@
             </view>
             <view class="details">
                 <view class="title" >{{item.title}}</view>
+                <view bindtap="jumpToUser" data-openid="{{item._openid}}" class="user-container">
+                    <image class="user-portrait" src="{{item.user_avatarUrl}}" />
+                    <view class="user-nickname">{{item.user_nickname}} </view>
+                </view>
             </view>
         </view>
     </view>

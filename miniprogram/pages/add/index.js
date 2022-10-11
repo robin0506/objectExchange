@@ -79,6 +79,8 @@ Page({
             data:{
               title: that.data.title,
               pic: that.data.pic,
+              user_nickname: wx.getStorageSync('userInfo').nickname,
+              user_avatarUrl: wx.getStorageSync('userInfo').avatarUrl,
               _createTime: now,
               _updateTime: now,
               _openid:openid
@@ -86,9 +88,22 @@ Page({
           }
         }).then((res)=>{
           console.log('addObject',res)
-          wx.switchTab({
-            url: '/pages/index/index'
+
+          wx.showToast({
+            title:'发布成功',
+            icon: 'success',
+            duration:2000,
+            mask: true,
+            success:()=>{
+              console.log('showToast success')
+              setTimeout(()=>{
+                    wx.switchTab({
+                      url: '/pages/user/index'
+                    })
+              },2000)
+            }
           })
+        
       })
   },
   /**

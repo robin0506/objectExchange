@@ -9,7 +9,10 @@ Page({
     list:[]
   },
 
-
+  jumpToUser(e) {
+      console.log('jumpToUser', e.currentTarget.dataset.openid)
+      wx.navigateTo({url:'/pages/myObject/index?page_openid='+e.currentTarget.dataset.openid})
+  },
 
   previewImage(res) {
      let selectIndex = res.currentTarget.dataset.index
