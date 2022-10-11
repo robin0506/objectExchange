@@ -49,8 +49,10 @@ Page({
   }
 
   },
-
-  jumpToAdd() {
+  jumpToService () {
+    wx.navigateTo({url:'/pages/service/index'})
+  },
+   jumpToAdd() {
      if (this.data.hasRegistered) {
        wx.navigateTo({url:'/pages/add/index'})
       } else {

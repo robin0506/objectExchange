@@ -1,6 +1,10 @@
 <!--pages/myObject/index.wxml-->
 <view class="my-object-container">
-    <view class="top-title">这是{{page_nickname}}发布的闲置物品</view>
+    <view class="top-container">
+        <image class="top-portrait" src="{{page_avatarUrl}}"></image>
+        <view class="top-title">{{page_nickname}}的闲置物品清单</view>
+    </view>
+
     <view class="objects">
         <view class="object  {{'object-'+index}}" wx:for="{{list}}" wx:key="pic" >
             <view class="object-pic">

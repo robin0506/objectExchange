@@ -1,0 +1,4 @@
+<!--pages/service/index.wxml-->
+<view class="title">你有任何问题都可以来问我哦～</view>
+
+<image bindtap="previewImage" class="service" show-menu-by-longpress="1" src="cloud://object-cloud-1gwedj6jbbe3ef50.6f62-object-cloud-1gwedj6jbbe3ef50-1300739443/service.jpeg"></image>

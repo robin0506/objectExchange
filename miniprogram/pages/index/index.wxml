@@ -1,18 +1,29 @@
 <!--pages/index/index.wxml-->
 <view class="container">
-    <view class="objects">
+    <view wx:if="{{showModal}}" class="modal"></view>
 
+    <view wx:if="{{!isCheck}}" class="objects">
         <view class="object  {{'object-'+index}}" wx:for="{{list}}" wx:key="pic" >
             <view class="object-pic">
                 <image wx:if="{{item.show}}" bindtap="previewImage" data-index='{{index}}' src="{{item.pic}}" class="object-picture" mode="aspectFit" alt=""/>
             </view>
             <view class="details">
+
                 <view class="title" >{{item.title}}</view>
                 <view bindtap="jumpToUser" data-openid="{{item._openid}}" class="user-container">
                     <image class="user-portrait" src="{{item.user_avatarUrl}}" />
                     <view class="user-nickname">{{item.user_nickname}} </view>
                 </view>
             </view>
+        </view>
+    </view>
+
+    <view wx:else class="objects">
+        <view class="object  {{'object-'+index}}" wx:for="{{list}}" wx:key="pic" >
+            <view class="object-pic">
+                <image wx:if="{{item.show}}" bindtap="previewImage" data-index='{{index}}' src="{{item.pic}}" class="object-picture" mode="aspectFit" alt=""/>
+            </view>
+
         </view>
     </view>
 </view>

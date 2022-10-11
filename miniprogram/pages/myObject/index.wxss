@@ -1,6 +1,18 @@
 /* pages/myObject/index.wxss */
 
-/* pages/index_c/index.js.wxss */
+
+.top-container{
+  padding: 30rpx;
+  display:flex;
+  align-items: center;
+}
+
+.top-portrait {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+}
+
 .top-title{
   padding: 30rpx;
   text-align:center;

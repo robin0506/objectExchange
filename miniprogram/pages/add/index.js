@@ -9,7 +9,8 @@ Page({
   data: {
     title:'',
     pic:PLAIN,
-    isCheck: true
+    isCheck: true,
+    showModal: true
   },
 
 
@@ -25,7 +26,7 @@ Page({
               }
             }).then((res)=>{
               console.log('getCheck', res.result.data[0].isCheck)
-              that.setData({isCheck: res.result.data[0].isCheck})
+              that.setData({isCheck: res.result.data[0].isCheck, showModal: false})
             })
   },
   /**

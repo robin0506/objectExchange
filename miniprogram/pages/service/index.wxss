@@ -1,0 +1,12 @@
+/* pages/service/index.wxss */
+.title{
+  padding-top: 100rpx;
+  font-size: 36rpx;
+  margin: 0 auto;
+}
+
+.service {
+  margin: 100rpx auto;
+  width: 500rpx;
+  height: 650rpx;
+}

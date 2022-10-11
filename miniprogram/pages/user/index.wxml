@@ -13,4 +13,8 @@
     <view wx:if="{{!isCheck}}" class="top" bindtap="jumpToAdd">
         <view class="detail">添加闲置物品</view>
     </view>
+
+    <view w class="top" bindtap="jumpToService">
+        <view class="detail">联系客服</view>
+    </view>
 </view>

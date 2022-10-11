@@ -6,9 +6,25 @@ Page({
    */
   data: {
     envId: 'object-cloud-1gwedj6jbbe3ef50',
-    list:[]
+    list:[],
+    isCheck: true,
+    showModal: true
   },
-
+  forCheck(){
+       let that = this
+       wx.cloud.callFunction({
+                name: 'objectFunctions',
+                config: {
+                  env: this.data.envId
+                },
+                data: {
+                  type: 'getCheck'
+                }
+              }).then((res)=>{
+                console.log('getCheck', res.result.data[0].isCheck)
+                that.setData({isCheck: res.result.data[0].isCheck, showModal: false})
+              })
+    },
   jumpToUser(e) {
       console.log('jumpToUser', e.currentTarget.dataset.openid)
       wx.navigateTo({url:'/pages/myObject/index?page_openid='+e.currentTarget.dataset.openid})
@@ -41,6 +57,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    this.forCheck()
     wx.cloud.callFunction({
           name: 'objectFunctions',
           config: {

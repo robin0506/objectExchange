@@ -1,5 +1,7 @@
 <!--pages/add/index.wxml-->
 <view>
+    <view wx:if="{{showModal}}" class="modal"></view>
+
     <view wx:if="{{!isCheck}}" class="add-container">
         <view class="title-container">
             <view class="title">闲置物品名称:</view>
