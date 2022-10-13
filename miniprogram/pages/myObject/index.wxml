@@ -3,12 +3,19 @@
     <view class="top-container">
         <image class="top-portrait" src="{{page_avatarUrl}}"></image>
         <view class="top-title">{{page_nickname}}的闲置物品清单</view>
+        <view wx:if="{{isSelf}}" bindtap="js_manage" class="manage-btn">{{managing? '取消':'管理'}}</view>
     </view>
 
     <view class="objects">
         <view class="object  {{'object-'+index}}" wx:for="{{list}}" wx:key="pic" >
             <view class="object-pic">
                 <image bindtap="previewImage" data-index='{{index}}' src="{{item.pic}}" class="object-picture" mode="aspectFit" alt=""/>
+                <view wx:if="{{managing}}" class="object-modal">
+
+                    <view bindtap="click_del" data-id="{{item._id}}" data-pic="{{item.pic}}" data-title="{{item.title}}" class="img-container">
+                        <image  src="../../images/delete.png"></image>
+                    </view>
+                </view>
             </view>
             <view class="details">
                 <view class="title" >{{item.title}}</view>

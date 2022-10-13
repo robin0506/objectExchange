@@ -1,5 +1,11 @@
 /* pages/index_c/index.js.wxss */
 
+.index-container{
+  padding-top:20rpx;
+  display:flex;
+  align-items: center;
+  flex-direction:column;
+}
 .modal{
   position: absolute;
   top:0;
@@ -7,6 +13,27 @@
   left: 0;
   right: 0;
   background: #fff;
+}
+
+.search-container{
+  position: relative;
+  width: 660rpx
+}
+
+.search-icon{
+  position: absolute;
+  left:20rpx;
+  top:20rpx;
+
+  width: 40rpx;
+  height: 40rpx;
+}
+.search_input{
+  padding-left: 80rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  height: 80rpx;
+  line-height: 80rpx;
 }
 
 .objects{

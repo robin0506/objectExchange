@@ -35,9 +35,9 @@ Page({
     },
 
   jumpLogin(){
-    if(!this.data.hasRegistered) {
+//    if(!this.data.hasRegistered) {
      wx.navigateTo({url:'/pages/login/index'})
-    }
+//    }
   },
   jumpToMy() {
   if (this.data.hasRegistered) {

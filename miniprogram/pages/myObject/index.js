@@ -10,7 +10,9 @@ Page({
     list:[],
     page_openid:'',
     page_nickname:'',
-    page_avatarUrl:  defaultAvatarUrl
+    page_avatarUrl:  defaultAvatarUrl,
+    isSelf: false, // 是否是本人
+    managing: false //管理 /取消管理,
   },
 
   /**
@@ -21,10 +23,59 @@ Page({
     this.setData({
       page_openid: options.page_openid
     })
-
+    this.checkIsSelf(options.page_openid)
     this.getContext()
     this.getData()
 
+  },
+
+  click_del(e) {
+    console.log('click_del', e.currentTarget.dataset.id)
+    let that = this
+     wx.showModal({
+          title:'提示',
+          content: '确定删除'+e.currentTarget.dataset.title+'?',
+          success: (res)=>{
+            if(res.confirm) {
+              console.log('执行删除'+e.currentTarget.dataset.id)
+              wx.cloud.deleteFile({
+                fileList:[e.currentTarget.dataset.pic],
+                success:(res)=>{
+                  console.log('delFile Success')
+                  wx.cloud.callFunction({
+                        name: 'objectFunctions',
+                        data: {
+                          type: 'delObject',
+                          condition: {
+                            _id: e.currentTarget.dataset.id
+                          }
+                        }
+                      }).then((res)=>{
+                        console.log('delObject success', res)
+                        wx.showToast({
+                            title:'已删除',
+                            icon: 'success',
+                            duration:2000,
+                            mask: true,
+                        })
+                        that.getData()
+                      })
+                }
+              })
+            }
+          }
+        })
+  },
+
+  js_manage(){
+    this.setData({managing: !this.data.managing})
+
+  },
+
+  checkIsSelf(page_openid) {
+    if (wx.getStorageSync('openid') && wx.getStorageSync('openid') ===page_openid) {
+      this.setData({isSelf: true})
+    }
   },
 
  previewImage(res) {
@@ -73,9 +124,6 @@ Page({
     let that = this
     wx.cloud.callFunction({
         name: 'objectFunctions',
-        config:{
-          env: this.data.envId
-        } ,
         data: {
           type: 'getObjectList',
           condition: {

@@ -10,7 +10,14 @@ exports.main = async (event, context) => {
   // 返回数据库查询结果
   if (event.condition) {
     return await db.collection('objects').orderBy('_updateTime','desc').where(event.condition).get();
-  } else {
+  } else if (event.searchValue) {
+    return await db.collection('objects').orderBy('_updateTime','desc').where({
+      title: db.RegExp({
+        regexp: event.searchValue,
+        options: 'i'
+      })
+    }).get();
+  } else  {
     return await db.collection('objects').orderBy('_updateTime','desc').get();
   }
   

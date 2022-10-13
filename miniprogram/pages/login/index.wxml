@@ -7,7 +7,7 @@
     </button>
     <view class="nickname-container">
         <view class="nickname-title">昵称</view>
-        <input type="nickname" class="nickname" bindinput="bindKeyInput"  placeholder="请输入昵称"/>
+        <input type="nickname" class="nickname" value="{{nickname}}" bindinput="bindKeyInput"  placeholder="请输入昵称"/>
     </view>
 
     <button disabled="{{!nickname}}" class="submit" bindtap="submit" type="primary">确定</button>

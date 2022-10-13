@@ -5,7 +5,7 @@ const updateUser = require('./updateUser/index')
 const selectUser = require('./selectUser/index')
 const addObject = require('./addObject/index')
 const getCheck = require('./getCheck/index')
-
+const delObject = require('./delObject/index')
 // 云函数入口函数
 exports.main = async (event, context) => {
   switch (event.type) {
@@ -23,5 +23,7 @@ exports.main = async (event, context) => {
       return await addObject.main(event, context);
     case 'getCheck':
       return await getCheck.main(event, context);
+    case 'delObject':
+      return await delObject.main(event, context);
   }
 };

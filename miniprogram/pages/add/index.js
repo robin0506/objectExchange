@@ -49,14 +49,15 @@ Page({
   },
 
   addPic() {
-    wx.chooseImage({
+    wx.chooseMedia({
       count:1,
-      sizeType: 'compressed',
+      mediaType:['image'],
+      sizeType: ['compressed'],
       success:(res)=>{
         console.log('chooseimage success', res)
         wx.cloud.uploadFile({
           cloudPath:'object/'+ new Date().getTime(),
-          filePath: res.tempFilePaths[0],
+          filePath: res.tempFiles[0].tempFilePath,
           success:(res)=>{
             console.log('uploadFile success', res)
             this.setData({pic: res.fileID})

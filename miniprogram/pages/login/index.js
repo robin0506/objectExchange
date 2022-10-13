@@ -23,7 +23,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    if(wx.getStorageSync('userInfo')) {
 
+      let userInfo = wx.getStorageSync('userInfo')
+      console.log('userInfo', userInfo)
+      this.setData({
+        avatarUrl: userInfo.avatarUrl,
+        nickname: userInfo.nickname
+      })
+    }
   },
   onChooseAvatar(e) {
     let that = this

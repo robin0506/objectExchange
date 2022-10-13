@@ -1,5 +1,14 @@
 /* pages/myObject/index.wxss */
 
+.manage-btn{
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 1rpx solid #222;
+  border-radius: 16rpx;
+  margin-left: 100rpx;
+  text-align:center;
+}
 
 .top-container{
   padding: 30rpx;
@@ -11,6 +20,7 @@
   width: 90rpx;
   height: 90rpx;
   border-radius: 45rpx;
+  max-width: 300rpx;
 }
 
 .top-title{
@@ -27,8 +37,34 @@
   margin-top: 20rpx;
   width: 50%;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+}
+
+.object-modal{
+  position:absolute;
+  background:rgba(0,0,0,0.5);
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display:flex;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.object-modal image{
+  width:50rpx;
+  height: 50rpx;
+  padding: 20rpx;
+  background:#ffffff;
+  border-radius: 50%;
+}
+
+.object-modal .img-container{
+  padding: 20rpx;
 }
 
 .object-pic{
@@ -37,6 +73,7 @@
   border-radius: 16rpx;
   overflow: hidden;
   background: #fff;
+  position: relative;
 }
 
 .object-picture{

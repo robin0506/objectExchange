@@ -8,22 +8,28 @@ Page({
     envId: 'object-cloud-1gwedj6jbbe3ef50',
     list:[],
     isCheck: true,
-    showModal: true
+    showModal: true,
+    searchValue:''
+  },
+  toSearch(e) {
+    console.log('tosearch', e.detail.value)
+    this.setData({searchValue: e.detail.value})
+    this.search()
   },
   forCheck(){
        let that = this
        wx.cloud.callFunction({
-                name: 'objectFunctions',
-                config: {
-                  env: this.data.envId
-                },
-                data: {
-                  type: 'getCheck'
-                }
-              }).then((res)=>{
-                console.log('getCheck', res.result.data[0].isCheck)
-                that.setData({isCheck: res.result.data[0].isCheck, showModal: false})
-              })
+              name: 'objectFunctions',
+              config: {
+                env: this.data.envId
+              },
+              data: {
+                type: 'getCheck'
+              }
+            }).then((res)=>{
+              console.log('getCheck', res.result.data[0].isCheck)
+              that.setData({isCheck: res.result.data[0].isCheck, showModal: false})
+            })
     },
   jumpToUser(e) {
       console.log('jumpToUser', e.currentTarget.dataset.openid)
@@ -58,23 +64,28 @@ Page({
    */
   onReady() {
     this.forCheck()
+    this.search()
+  },
+
+  search() {
     wx.cloud.callFunction({
-          name: 'objectFunctions',
-          config: {
-            env: this.data.envId
-          },
-          data: {
-            type: 'getObjectList'
-          }
-        }).then( (res)=>{
-          this.setData({list: res.result.data.map(res=>{
-            res.show = false
-            return res
-          }) || []})
-          this.lazyLoad()
-        }).catch((e)=>{
-          console.log('getObjectList fail', e)
-        })
+            name: 'objectFunctions',
+            config: {
+              env: this.data.envId
+            },
+            data: {
+              type: 'getObjectList',
+              searchValue: this.data.searchValue
+            }
+          }).then( (res)=>{
+            this.setData({list: res.result.data.map(res=>{
+              res.show = false
+              return res
+            }).splice(0,20) || []})
+            this.lazyLoad()
+          }).catch((e)=>{
+            console.log('getObjectList fail', e)
+          })
   },
 
   lazyLoad(){
