@@ -6,7 +6,7 @@
   line-height: 60rpx;
   border: 1rpx solid #222;
   border-radius: 16rpx;
-  margin-left: 100rpx;
+  margin-left: 20rpx;
   text-align:center;
 }
 
@@ -25,7 +25,11 @@
 
 .top-title{
   padding: 30rpx;
-  text-align:center;
+  text-align:left;
+  width:300rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .objects{
   display: flex;
@@ -105,4 +109,26 @@
   margin-top:30vh;
   text-align:center;
   color: #333;
+}
+
+.to-index {
+  width: 200rpx;
+  height: 50rpx;
+  border: 1rpx solid #333;
+  border-radius: 25rpx;
+  position: fixed;
+  right: -25rpx;
+  bottom: 150rpx;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  background: #fff;
+}
+
+.to-index image {
+  margin: 0 20rpx 0 30rpx;
+  width: 40rpx;
+  height: 40rpx;
 }

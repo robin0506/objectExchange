@@ -11,6 +11,7 @@ Page({
     page_openid:'',
     page_nickname:'',
     page_avatarUrl:  defaultAvatarUrl,
+    page_contact:'',
     isSelf: false, // 是否是本人
     managing: false //管理 /取消管理,
   },
@@ -28,6 +29,26 @@ Page({
     this.getData()
 
   },
+
+  onShareAppMessage(){
+    return {
+      title:'【断舍离】付邮费，送闲置！'
+    }
+  },
+  js_contact(){
+    console.log('js_contact')
+    wx.showModal({
+      title:'TA的联系方式',
+      content: this.data.page_contact? this.data.page_contact:'TA暂时没有联系方式哦，请添加客服微信17610980813',
+      showCancel: false
+    })
+  },
+
+ jumpToIndex(){
+  wx.switchTab({
+    url: '/pages/index/index'
+  })
+ },
 
   click_del(e) {
     console.log('click_del', e.currentTarget.dataset.id)
@@ -114,7 +135,8 @@ Page({
             let data = res.result.data[0]
             that.setData({
               page_nickname: data.nickname,
-              page_avatarUrl: data.avatarUrl
+              page_avatarUrl: data.avatarUrl,
+              page_contact: data.contact
             })
           }
         })
@@ -179,10 +201,5 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
 
-  }
 })

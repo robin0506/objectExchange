@@ -8,8 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: defaultAvatarUrl,
-    nickname: ''
+    avatarUrl: '' ,//defaultAvatarUrl,
+    nickname: '',
+    contact: '',
   },
 
   /**
@@ -24,12 +25,12 @@ Page({
    */
   onReady() {
     if(wx.getStorageSync('userInfo')) {
-
       let userInfo = wx.getStorageSync('userInfo')
       console.log('userInfo', userInfo)
       this.setData({
         avatarUrl: userInfo.avatarUrl,
-        nickname: userInfo.nickname
+        nickname: userInfo.nickname,
+        contact: userInfo.contact,
       })
     }
   },
@@ -59,17 +60,25 @@ Page({
 //        })
   },
 
-  bindKeyInput: function (e) {
+  bindKeyNickname: function (e) {
+      console.log('nickname', e.detail.value)
       this.setData({
         nickname: e.detail.value
       })
     },
 
+  bindKeyContact: function (e) {
+        this.setData({
+          contact: e.detail.value
+        })
+      },
+
   submit(){
     let that = this
     let userInfo = {
       avatarUrl: this.data.avatarUrl,
-      nickname: this.data.nickname
+      nickname: this.data.nickname,
+      contact: this.data.contact
     }
     wx.setStorageSync('userInfo',userInfo)
     let openid = wx.getStorageSync('openid')
@@ -102,6 +111,7 @@ Page({
                   data:{
                     avatarUrl: that.data.avatarUrl,
                     nickname: that.data.nickname,
+                    contact: that.data.contact,
                     _openid:openid
                   }
                 }
@@ -122,7 +132,8 @@ Page({
                   data:{
                     avatarUrl: that.data.avatarUrl,
                     nickname: that.data.nickname,
-                    _openid:openid
+                    contact: that.data.contact,
+                    _openid: openid
                   }
                 }
               }).then((res)=>{
@@ -142,17 +153,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   jumpBack() {
-     wx.switchTab({
-          url: '/pages/user/index',
-          success:()=>{
-            let page = getCurrentPages().pop()
-            if (page == undefined || page == null) return;
-            page.onLoad()
-          },
-          fail:(e)=>{
-              console.log('fail',e)
-          }
-        })
+
+     wx.showToast({
+      title:'修改成功'
+     })
+     setTimeout(()=>{
+      wx.switchTab({
+                url: '/pages/user/index',
+                success:()=>{
+                  let page = getCurrentPages().pop()
+                  if (page == undefined || page == null) return;
+                  page.onLoad()
+                },
+                fail:(e)=>{
+                    console.log('fail',e)
+                }
+              })
+     },2000)
+
   },
 
   onShow() {

@@ -2,8 +2,9 @@
 <view class="my-object-container">
     <view class="top-container">
         <image class="top-portrait" src="{{page_avatarUrl}}"></image>
-        <view class="top-title">{{page_nickname}}的闲置物品清单</view>
+        <view class="top-title">{{page_nickname}}</view>
         <view wx:if="{{isSelf}}" bindtap="js_manage" class="manage-btn">{{managing? '取消':'管理'}}</view>
+        <view wx:else class="manage-btn" bindtap="js_contact">联系TA</view>
     </view>
 
     <view class="objects">
@@ -22,5 +23,10 @@
             </view>
         </view>
         <view wx:if="{{list.length == 0}}" class="hint">你还没有发布闲置物品哦～</view>
+    </view>
+
+    <view wx:if="{{!isSelf}}" bindtap="jumpToIndex" class="to-index">
+        <image src="../../images/index.png"></image>
+        <view>首页</view>
     </view>
 </view>

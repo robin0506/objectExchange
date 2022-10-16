@@ -5,25 +5,30 @@
   margin:50rpx 20rpx 0 20rpx!important;
   width: 120rpx!important;
   height: 120rpx!important;
-  background: #eee;
   padding: 0;
+  position: relative;
 }
 
 .portrait{
-  width: 120rpx;
-  height: 120rpx;
+  width: 116rpx;
+  height: 116rpx;
+  background-image:url('https://6f62-object-cloud-1gwedj6jbbe3ef50-1300739443.tcb.qcloud.la/camera.png?sign=0e51ea2ab4728d7a161370918bb33652&t=1665923202');
+  background-size: 70% 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1rpx solid #333;
+  border-radius: 50%;
 }
 
-.nickname-container {
-  margin-top:60rpx;
+.item-container {
+  margin-top:20rpx;
   width: 100%;
-  border-top:1rpx solid #ddd;
-  border-bottom:1rpx solid #ddd;
+  background: #fff;
   height: 80rpx;
   display:flex;
   align-items: center;
 }
-.nickname-title {
+.item-title {
   padding:0 30rpx;
 }
 

@@ -1,20 +1,26 @@
 <!--pages/user/index.wxml-->
 <view class="container">
     <view class="top" bindtap="jumpLogin">
+        <view class="top-left">
         <button class="portrait-container">
             <image src="{{avatarUrl}}" class="portrait"></image>
         </button>
         <view >{{nickname? nickname: '点击登录'}}</view>
+        </view>
+        <image class="arrow" src="../../images/arrow.png"></image>
     </view>
 
     <view wx:if="{{!isCheck}}" class="top" bindtap="jumpToMy">
-        <view class="detail">我的闲置物品清单</view>
+        <view class="detail">我的闲置物品</view>
+        <image class="arrow" src="../../images/arrow.png"></image>
     </view>
     <view wx:if="{{!isCheck}}" class="top" bindtap="jumpToAdd">
-        <view class="detail">添加闲置物品</view>
+        <view class="detail">发布闲置物品</view>
+        <image class="arrow" src="../../images/arrow.png"></image>
     </view>
 
     <view w class="top" bindtap="jumpToService">
         <view class="detail">联系客服</view>
+        <image class="arrow" src="../../images/arrow.png"></image>
     </view>
 </view>

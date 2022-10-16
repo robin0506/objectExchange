@@ -7,7 +7,12 @@ height: 150rpx;
 background: #ffffff;
 display: flex;
 align-items: center;
-justify-content: flex-start;
+justify-content: space-between;
+}
+
+.top-left {
+  display:flex;
+  align-items: center;
 }
 
 .portrait-container{
@@ -26,4 +31,10 @@ border-radius: 45px;
 }
 .detail {
   padding: 0 30rpx;
+}
+
+.arrow {
+  width: 55rpx;
+  height: 55rpx;
+  padding-right: 50rpx;
 }

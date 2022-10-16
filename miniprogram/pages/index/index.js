@@ -9,11 +9,17 @@ Page({
     list:[],
     isCheck: true,
     showModal: true,
-    searchValue:''
+    searchValue:'',
+    showNum: 10,
+  },
+
+  showMore() {
+    console.log('showMore')
+    this.setData({showNum: this.data.showNum+10})
   },
   toSearch(e) {
     console.log('tosearch', e.detail.value)
-    this.setData({searchValue: e.detail.value})
+    this.setData({searchValue: e.detail.value, showNum: 10})
     this.search()
   },
   forCheck(){
@@ -81,8 +87,8 @@ Page({
             this.setData({list: res.result.data.map(res=>{
               res.show = false
               return res
-            }).splice(0,20) || []})
-            this.lazyLoad()
+            })|| []})
+//            this.lazyLoad()  每次显示10个 取消懒加载
           }).catch((e)=>{
             console.log('getObjectList fail', e)
           })
